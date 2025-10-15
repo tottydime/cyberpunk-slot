@@ -46,6 +46,31 @@ h1 {
   margin-bottom: 30px;
 }
 
+.coin-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#coin {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff00c8;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#coin:hover {
+  transform: scale(1.1);
+}
+
+.touch-instruction {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7;
+}
+
 .slot-machine {
   display: flex;
   justify-content: center;
