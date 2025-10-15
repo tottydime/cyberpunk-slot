@@ -29,8 +29,8 @@
   </div>
 
   <!-- Suoni -->
-  <audio id="spinSound" src="spin.mp3"></audio>
-  <audio id="winSound" src="win.mp3"></audio>
+  <audio id="spinSound" src="spin.mp3" preload="auto"></audio>
+  <audio id="winSound" src="win.mp3" preload="auto"></audio>
 
   <!-- Script -->
   <script>
@@ -47,6 +47,12 @@
     const winScreen = document.getElementById("winScreen");
     const spinSound = document.getElementById("spinSound");
     const winSound = document.getElementById("winSound");
+
+    // Sblocca audio su mobile al primo tocco
+    document.body.addEventListener("click", () => {
+      spinSound.play().then(() => spinSound.pause()).catch(() => {});
+      winSound.play().then(() => winSound.pause()).catch(() => {});
+    }, { once: true });
 
     function spinReels() {
       if (spinSound) {
@@ -93,12 +99,6 @@
 
     spinButton.addEventListener("click", spinReels);
     retryButton.addEventListener("click", spinReels);
-
-    // Sblocca audio su mobile senza riprodurlo
-    document.body.addEventListener("click", () => {
-      spinSound.load();
-      winSound.load();
-    }, { once: true });
   </script>
 </body>
 </html>
