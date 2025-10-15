@@ -1,33 +1,49 @@
-body {
-  background-image: url('slot-machine.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  backdrop-filter: blur(2px);
-}
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(circle at center, #0f0f0f, #000000);
+  background-color: #000;
   color: #00ffe7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
 
-.container {
-  text-align: center;
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slot-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.3);
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   padding: 20px;
+  text-align: center;
 }
 
 h1 {
   font-size: 2rem;
   color: #ff00c8;
   text-shadow: 0 0 10px #ff00c8;
+  margin-bottom: 20px;
 }
 
 .slot-machine {
@@ -48,6 +64,17 @@ h1 {
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 15px #00ffe7;
+  transition: transform 0.2s;
+}
+
+.spinning {
+  animation: spin 0.2s infinite;
+}
+
+@keyframes spin {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 button {
@@ -60,6 +87,7 @@ button {
   cursor: pointer;
   box-shadow: 0 0 10px #ff00c8;
   transition: transform 0.2s;
+  margin-top: 10px;
 }
 
 button:hover {
@@ -70,7 +98,11 @@ button:hover {
   display: none;
 }
 
-#popup, #winScreen {
+#popup {
+  margin-top: 20px;
+}
+
+#winScreen {
   margin-top: 30px;
 }
 
@@ -85,51 +117,11 @@ button:hover {
   font-size: 1.5rem;
   color: #00ffe7;
   text-shadow: 0 0 10px #00ffe7;
+  margin-top: 10px;
 }
+
 .jackpot-icon {
   width: 60px;
   height: 60px;
   border-radius: 8px;
-}
-.background {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.slot-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  filter: brightness(0.4);
-}
-
-.overlay {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 20px;
-}
-.jackpot-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-}
-.spinning {
-  animation: spin 0.2s infinite;
-}
-
-@keyframes spin {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
 }
