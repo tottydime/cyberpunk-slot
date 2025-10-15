@@ -1,31 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cyberpunk Slot Machine</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Cyberpunk Slot Machine</h1>
-    <div class="slot-machine">
-      <div class="reel" id="reel1">🍒</div>
-      <div class="reel" id="reel2">🔔</div>
-      <div class="reel" id="reel3">💎</div>
-    </div>
-    <button id="spinButton">SPIN</button>
-    <div id="popup" class="hidden">
-      <p>Try again?</p>
-      <button id="retryButton">SPIN AGAIN</button>
-    </div>
-    <div id="winScreen" class="hidden">
-      <img src="jackpot-image.jpeg" alt="Jackpot Icon" />
-      <h2>YOU WON A DIME… A TOTTY DIME</h2>
-    </div>
-  </div>
-  <audio id="spinSound" src="https://freesound.org/data/previews/341/341695_5260877-lq.mp3"></audio>
-  <audio id="winSound" src="https://freesound.org/data/previews/276/276020_4486188-lq.mp3"></audio>
-  <script src="script.js"></script>
-</body>
-</html>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #0f0f0f, #000000);
+  color: #00ffe7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #ff00c8;
+  text-shadow: 0 0 10px #ff00c8;
+}
+
+.slot-machine {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.reel {
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 10px;
+  background: #111;
+  border: 2px solid #00ffe7;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px #00ffe7;
+}
+
+button {
+  background: #ff00c8;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff00c8;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+#popup, #winScreen {
+  margin-top: 30px;
+}
+
+#winScreen img {
+  max-width: 300px;
+  border: 3px solid #ff00c8;
+  box-shadow: 0 0 20px #ff00c8;
+  border-radius: 10px;
+}
+
+#winScreen h2 {
+  font-size: 1.5rem;
+  color: #00ffe7;
+  text-shadow: 0 0 10px #00ffe7;
+}
