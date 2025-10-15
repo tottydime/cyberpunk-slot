@@ -129,26 +129,26 @@ button:hover {
 
 #winScreen {
   margin-top: 30px;
-  animation: flash 0.8s infinite;
-}
-
-@keyframes flash {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #winScreen img {
-  max-width: 280px;
+  max-width: 90%;
+  max-height: 80vh;
   border: 3px solid #ff00c8;
   box-shadow: 0 0 25px #ff00c8;
   border-radius: 12px;
+  object-fit: contain;
 }
 
-#winScreen h2 {
+.win-message {
   font-size: 1.6rem;
   color: #00ffe7;
-  text-shadow: 0 0 12px #00ffe7;
-  margin-top: 12px;
+  text-shadow: 0 0 10px #00ffe7;
+  margin-top: 20px;
 }
 
 .jackpot-icon {
