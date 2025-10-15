@@ -12,12 +12,19 @@
     <img src="slot-machine.jpeg" alt="Slot Machine" class="slot-background" />
     <div class="overlay">
       <h1>Totty Dime's Slot Machine</h1>
+
+      <!-- Moneta da toccare -->
+      <div class="coin-container">
+        <img src="coin.jpeg" alt="Totty Dime Coin" id="coin" />
+        <p class="touch-instruction">Touch the coin to begin</p>
+      </div>
+
       <div class="slot-machine">
         <div class="reel" id="reel1">🐶</div>
         <div class="reel" id="reel2">🦁</div>
         <div class="reel" id="reel3">🐲</div>
       </div>
-      <button id="spinButton">SPIN</button>
+      <button id="spinButton" disabled>SPIN</button>
       <div id="popup" class="hidden">
         <p>Try again?</p>
         <button id="retryButton">SPIN AGAIN</button>
@@ -48,12 +55,16 @@
     const winScreen = document.getElementById("winScreen");
     const spinSound = document.getElementById("spinSound");
     const winSound = document.getElementById("winSound");
+    const coin = document.getElementById("coin");
+    const instruction = document.querySelector(".touch-instruction");
 
-    // Sblocca audio su mobile al primo tocco
-    document.body.addEventListener("click", () => {
+    // Tocca la moneta per abilitare il gioco
+    coin.addEventListener("click", () => {
+      spinButton.disabled = false;
+      instruction.textContent = "Ready to spin!";
       spinSound.play().then(() => spinSound.pause()).catch(() => {});
       winSound.play().then(() => winSound.pause()).catch(() => {});
-    }, { once: true });
+    });
 
     function spinReels() {
       spinSound.currentTime = 0;
