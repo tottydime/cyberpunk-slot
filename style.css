@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
 body {
   margin: 0;
@@ -40,10 +40,10 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #ff00c8;
-  text-shadow: 0 0 10px #ff00c8;
-  margin-bottom: 20px;
+  text-shadow: 0 0 15px #ff00c8;
+  margin-bottom: 30px;
 }
 
 .slot-machine {
@@ -54,16 +54,16 @@ h1 {
 
 .reel {
   font-size: 3rem;
-  width: 80px;
-  height: 80px;
-  margin: 0 10px;
-  background: #111;
+  width: 90px;
+  height: 90px;
+  margin: 0 15px;
+  background: radial-gradient(circle, #111 40%, #222 100%);
   border: 2px solid #00ffe7;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 15px #00ffe7;
+  box-shadow: 0 0 20px #00ffe7;
   transition: transform 0.2s;
 }
 
@@ -81,11 +81,11 @@ button {
   background: #ff00c8;
   color: #000;
   border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 0 10px #ff00c8;
+  box-shadow: 0 0 12px #ff00c8;
   transition: transform 0.2s;
   margin-top: 10px;
 }
@@ -104,24 +104,30 @@ button:hover {
 
 #winScreen {
   margin-top: 30px;
+  animation: flash 0.8s infinite;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 #winScreen img {
-  max-width: 300px;
+  max-width: 280px;
   border: 3px solid #ff00c8;
-  box-shadow: 0 0 20px #ff00c8;
-  border-radius: 10px;
+  box-shadow: 0 0 25px #ff00c8;
+  border-radius: 12px;
 }
 
 #winScreen h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #00ffe7;
-  text-shadow: 0 0 10px #00ffe7;
-  margin-top: 10px;
+  text-shadow: 0 0 12px #00ffe7;
+  margin-top: 12px;
 }
 
 .jackpot-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
 }
