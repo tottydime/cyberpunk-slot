@@ -15,7 +15,7 @@
 
       <!-- Moneta da toccare -->
       <div class="coin-container">
-        <img src="coin.jpeg" alt="Totty Dime Coin" id="coin" />
+        <img src="coin.jpeg.png" alt="Totty Dime Coin" id="coin" />
         <p class="touch-instruction">Touch the coin to begin</p>
       </div>
 
@@ -58,7 +58,7 @@
     const coin = document.getElementById("coin");
     const instruction = document.querySelector(".touch-instruction");
 
-    // Tocca la moneta per abilitare il gioco
+    // Tocca la moneta per abilitare il gioco e sbloccare l’audio
     coin.addEventListener("click", () => {
       spinButton.disabled = false;
       instruction.textContent = "Ready to spin!";
