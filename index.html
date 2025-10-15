@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Totty Dime's Slot Machine</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="background">
@@ -55,10 +56,8 @@
     }, { once: true });
 
     function spinReels() {
-      if (spinSound) {
-        spinSound.currentTime = 0;
-        spinSound.play().catch(() => {});
-      }
+      spinSound.currentTime = 0;
+      spinSound.play().catch(() => {});
 
       reel1.classList.add("spinning");
       reel2.classList.add("spinning");
@@ -89,10 +88,8 @@
           reel3.innerHTML = jackpotSymbol;
           popup.classList.add("hidden");
           winScreen.classList.remove("hidden");
-          if (winSound) {
-            winSound.currentTime = 0;
-            winSound.play().catch(() => {});
-          }
+          winSound.currentTime = 0;
+          winSound.play().catch(() => {});
         }
       }, 2000);
     }
