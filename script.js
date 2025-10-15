@@ -15,6 +15,11 @@ const winSound = document.getElementById("winSound");
 function spinReels() {
   if (spinSound) spinSound.play();
 
+  // Aggiungi classe animazione
+  reel1.classList.add("spinning");
+  reel2.classList.add("spinning");
+  reel3.classList.add("spinning");
+
   let interval = setInterval(() => {
     reel1.textContent = symbols[Math.floor(Math.random() * symbols.length)];
     reel2.textContent = symbols[Math.floor(Math.random() * symbols.length)];
@@ -24,6 +29,11 @@ function spinReels() {
   setTimeout(() => {
     clearInterval(interval);
     spinCount++;
+
+    // Rimuovi animazione
+    reel1.classList.remove("spinning");
+    reel2.classList.remove("spinning");
+    reel3.classList.remove("spinning");
 
     if (spinCount === 1) {
       reel1.textContent = symbols[0];
