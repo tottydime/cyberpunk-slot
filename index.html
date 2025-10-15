@@ -5,18 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Totty Dime's Slot Machine</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="background">
     <img src="slot-machine.jpeg" alt="Slot Machine" class="slot-background" />
     <div class="overlay">
       <h1>Totty Dime's Slot Machine</h1>
+
+      <!-- Moneta da toccare -->
+      <div class="coin-container">
+        <img src="coin.jpeg.png" alt="Totty Dime Coin" id="coin" />
+        <p class="touch-instruction">Touch the coin to begin</p>
+      </div>
+
       <div class="slot-machine">
         <div class="reel" id="reel1">🐶</div>
         <div class="reel" id="reel2">🦁</div>
         <div class="reel" id="reel3">🐲</div>
       </div>
-      <button id="spinButton">SPIN</button>
+      <button id="spinButton" disabled>SPIN</button>
       <div id="popup" class="hidden">
         <p>Try again?</p>
         <button id="retryButton">SPIN AGAIN</button>
@@ -29,8 +37,8 @@
   </div>
 
   <!-- Suoni -->
-  <audio id="spinSound" src="spin.mp3"></audio>
-  <audio id="winSound" src="win.mp3"></audio>
+  <audio id="spinSound" src="spin.mp3" preload="auto"></audio>
+  <audio id="winSound" src="win.mp3" preload="auto"></audio>
 
   <!-- Script -->
   <script>
@@ -47,12 +55,20 @@
     const winScreen = document.getElementById("winScreen");
     const spinSound = document.getElementById("spinSound");
     const winSound = document.getElementById("winSound");
+    const coin = document.getElementById("coin");
+    const instruction = document.querySelector(".touch-instruction");
+
+    // Tocca la moneta per abilitare il gioco e sbloccare l’audio
+    coin.addEventListener("click", () => {
+      spinButton.disabled = false;
+      instruction.textContent = "Ready to spin!";
+      spinSound.play().then(() => spinSound.pause()).catch(() => {});
+      winSound.play().then(() => winSound.pause()).catch(() => {});
+    });
 
     function spinReels() {
-      if (spinSound) {
-        spinSound.currentTime = 0;
-        spinSound.play().catch(() => {});
-      }
+      spinSound.currentTime = 0;
+      spinSound.play().catch(() => {});
 
       reel1.classList.add("spinning");
       reel2.classList.add("spinning");
@@ -83,22 +99,14 @@
           reel3.innerHTML = jackpotSymbol;
           popup.classList.add("hidden");
           winScreen.classList.remove("hidden");
-          if (winSound) {
-            winSound.currentTime = 0;
-            winSound.play().catch(() => {});
-          }
+          winSound.currentTime = 0;
+          winSound.play().catch(() => {});
         }
       }, 2000);
     }
 
     spinButton.addEventListener("click", spinReels);
     retryButton.addEventListener("click", spinReels);
-
-    // Sblocca audio su mobile al primo tocco
-    document.body.addEventListener("click", () => {
-      spinSound.play().catch(() => {});
-      winSound.play().catch(() => {});
-    }, { once: true });
   </script>
 </body>
 </html>
