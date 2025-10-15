@@ -135,4 +135,13 @@ button:hover {
   flex-direction: column;
 }
 
-#winScreen img [9F742443-6C92-4C44-BF58-8F5A7C53B6F1](https://github.com/lzh-yi/Web-Fork-/tree/024b3e55587afdf9f05a677613a75f24e3d1803e/03-CSS%E8%BF%9B%E9%98%B6%2F04-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F.md?citationMarker=9F742443-6C92-4C44-BF58-8F5A7C53B6F1&citationId=F5617793-25A6-4047-B402-8C9663E70158&citationTitle=github.com&citationFullTitle=github.com&chatItemId=Pjqmy3p3isniirXGUhxpW)
+#winScreen img {
+  max-width: 90%;
+  max-height: 80vh;
+  border: 3px solid #ff00c8;
+  box-shadow: 0 0 25px #ff00c8;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+ [9F742443-6C92-4C44-BF58-8F5A7C53B6F1](https://github.com/lzh-yi/Web-Fork-/tree/024b3e55587afdf9f05a677613a75f24e3d1803e/03-CSS%E8%BF%9B%E9%98%B6%2F04-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F.md?citationMarker=9F742443-6C92-4C44-BF58-8F5A7C53B6F1&citationId=FDC7CBB4-5A64-4151-B6EE-5642EE72A606&citationTitle=github.com&citationFullTitle=github.com&chatItemId=ZFQweQpndSi1C6Fzmdxjw)
