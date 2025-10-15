@@ -128,12 +128,8 @@ button:hover {
 }
 
 #winScreen {
-  margin-top: 20px;
+  margin-top: 30px;
   animation: flash 0.8s infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 @keyframes flash {
@@ -142,16 +138,14 @@ button:hover {
 }
 
 #winScreen img {
-  max-width: 90%;
-  max-height: 80vh;
+  max-width: 280px;
   border: 3px solid #ff00c8;
   box-shadow: 0 0 25px #ff00c8;
   border-radius: 12px;
-  object-fit: contain;
 }
 
-.jackpot-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
-}
+#winScreen h2 {
+  font-size: 1.6rem;
+  color: #00ffe7;
+  text-shadow: 0 0 12px #00ffe7;
+  margin-top: 12px
