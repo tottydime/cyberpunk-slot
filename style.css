@@ -79,3 +79,8 @@ button:hover {
   color: #00ffe7;
   text-shadow: 0 0 10px #00ffe7;
 }
+.jackpot-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+}
