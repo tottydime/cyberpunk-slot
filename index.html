@@ -94,10 +94,10 @@
     spinButton.addEventListener("click", spinReels);
     retryButton.addEventListener("click", spinReels);
 
-    // Sblocca audio su mobile al primo tocco
+    // Sblocca audio su mobile senza riprodurlo
     document.body.addEventListener("click", () => {
-      spinSound.play().catch(() => {});
-      winSound.play().catch(() => {});
+      spinSound.load();
+      winSound.load();
     }, { once: true });
   </script>
 </body>
