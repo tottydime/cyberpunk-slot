@@ -7,25 +7,26 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Cyberpunk Slot Machine</h1>
-    <div class="slot-machine">
-      <div class="reel" id="reel1">🍒</div>
-      <div class="reel" id="reel2">🔔</div>
-      <div class="reel" id="reel3">💎</div>
-    </div>
-    <button id="spinButton">SPIN</button>
-    <div id="popup" class="hidden">
-      <p>Try again?</p>
-      <button id="retryButton">SPIN AGAIN</button>
-    </div>
-    <div id="winScreen" class="hidden">
-      <img src="jackpot-image.jpeg" alt="Jackpot Icon" />
-      <h2>YOU WON A DIME… A TOTTY DIME</h2>
+  <div class="background">
+    <img src="slot-machine.jpeg" alt="Slot Machine" class="slot-background" />
+    <div class="overlay">
+      <h1>Cyberpunk Slot Machine</h1>
+      <div class="slot-machine">
+        <div class="reel" id="reel1">🐶</div>
+        <div class="reel" id="reel2">🦁</div>
+        <div class="reel" id="reel3">🐲</div>
+      </div>
+      <button id="spinButton">SPIN</button>
+      <div id="popup" class="hidden">
+        <p>Try again?</p>
+        <button id="retryButton">SPIN AGAIN</button>
+      </div>
+      <div id="winScreen" class="hidden">
+        <img src="jackpot-image.jpeg" alt="Jackpot Icon" />
+        <h2>YOU WON A DIME… A TOTTY DIME</h2>
+      </div>
     </div>
   </div>
-  <audio id="spinSound" src="https://freesound.org/data/previews/341/341695_5260877-lq.mp3"></audio>
-  <audio id="winSound" src="https://freesound.org/data/previews/276/276020_4486188-lq.mp3"></audio>
-  <script src="script.js"></script>
+  ...
 </body>
 </html>
