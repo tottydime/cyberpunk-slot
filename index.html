@@ -25,13 +25,14 @@
         <div class="reel" id="reel3">🐲</div>
       </div>
       <button id="spinButton" disabled>SPIN</button>
+
       <div id="popup" class="hidden">
-        <p>Try again?</p>
+        <p>You lost… try again!</p>
         <button id="retryButton">SPIN AGAIN</button>
       </div>
+
       <div id="winScreen" class="hidden">
         <img src="jackpot-image.jpeg" alt="Jackpot Icon" />
-        <h2>YOU WON A DIME… A TOTTY DIME</h2>
       </div>
     </div>
   </div>
@@ -99,6 +100,7 @@
           reel3.innerHTML = jackpotSymbol;
           popup.classList.add("hidden");
           winScreen.classList.remove("hidden");
+          spinButton.style.display = "none"; // Nasconde il bottone SPIN
           winSound.currentTime = 0;
           winSound.play().catch(() => {});
         }
