@@ -11,7 +11,7 @@
   <div class="background">
     <img src="slot-machine.jpeg" alt="Slot Machine" class="slot-background" />
     <div class="overlay">
-      <h1>Totty Dime's Slot Machine</h1>
+      <h1 id="mainTitle">Totty Dime's Slot Machine</h1>
 
       <!-- Moneta da toccare -->
       <div class="coin-container">
@@ -58,11 +58,13 @@
     const winSound = document.getElementById("winSound");
     const coin = document.getElementById("coin");
     const instruction = document.querySelector(".touch-instruction");
+    const mainTitle = document.getElementById("mainTitle");
 
     // Tocca la moneta per abilitare il gioco e sbloccare l’audio
     coin.addEventListener("click", () => {
       spinButton.disabled = false;
       instruction.textContent = "Ready to spin!";
+      // Sblocca l'audio senza riprodurlo
       spinSound.play().then(() => spinSound.pause()).catch(() => {});
       winSound.play().then(() => winSound.pause()).catch(() => {});
     });
@@ -100,7 +102,8 @@
           reel3.innerHTML = jackpotSymbol;
           popup.classList.add("hidden");
           winScreen.classList.remove("hidden");
-          spinButton.style.display = "none"; // Nasconde il bottone SPIN
+          spinButton.style.display = "none";
+          mainTitle.style.display = "none"; // Nasconde il titolo
           winSound.currentTime = 0;
           winSound.play().catch(() => {});
         }
