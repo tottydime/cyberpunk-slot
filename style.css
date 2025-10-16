@@ -1,158 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Totty Dime's Slot Machine</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background">
+    <img src="slot-machine.jpeg" alt="Slot Machine" class="slot-background" />
+    <div class="overlay">
+      <h1 id="mainTitle">Totty Dime's Slot Machine</h1>
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Orbitron', sans-serif;
-  background-color: #000;
-  color: #00ffe7;
-  height: 100vh;
-  overflow: hidden;
-}
+      <div class="coin-container">
+        <img src="coin.jpeg.png" alt="Totty Dime Coin" id="coin" />
+        <p class="touch-instruction">Touch the coin to begin</p>
+      </div>
 
-.background {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+      <div class="slot-machine">
+        <div class="reel" id="reel1">🐶</div>
+        <div class="reel" id="reel2">🦁</div>
+        <div class="reel" id="reel3">🐲</div>
+      </div>
+      <button id="spinButton" disabled>SPIN</button>
 
-.slot-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  filter: brightness(0.3);
-}
+      <div id="popup" class="hidden">
+        <p>You lost… try again!</p>
+        <button id="retryButton">SPIN AGAIN</button>
+      </div>
 
-.overlay {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 20px;
-  text-align: center;
-}
+      <div id="winScreen" class="hidden">
+        <h2 class="win-message">YOU WON A DIME… A TOTTY DIME!</h2>
+      </div>
+    </div>
+  </div>
 
-h1 {
-  font-size: 2.5rem;
-  color: #ff00c8;
-  text-shadow: 0 0 15px #ff00c8;
-  margin-bottom: 30px;
-}
+  <audio id="spinSound" src="spin.mp3" preload="auto"></audio>
+  <audio id="winSound" src="win.mp3" preload="auto"></audio>
 
-.coin-container {
-  margin-top: 20px;
-  text-align: center;
-}
+  <script>
+    const symbols = ["🐶", "🦁", "🦦", "🐲"];
+    const jackpotSymbol = "💎";
 
-#coin {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  box-shadow: 0 0 20px #ff00c8;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
+    let spinCount = 0;
+    const reel1 = document.getElementById("reel1");
+    const reel2 = document.getElementById("reel2");
+    const reel3 = document.getElementById("reel3");
+    const spinButton = document.getElementById("spinButton");
+    const retryButton = document.getElementById("retryButton");
+    const popup = document.getElementById("popup");
+    const winScreen = document.getElementById("winScreen");
+    const spinSound = document.getElementById("spinSound");
+    const winSound = document.getElementById("winSound");
+    const coin = document.getElementById("coin");
+    const instruction = document.querySelector(".touch-instruction");
+    const mainTitle = document.getElementById("mainTitle");
 
-#coin:hover {
-  transform: scale(1.1);
-}
+    coin.addEventListener("click", () => {
+      spinButton.disabled = false;
+      instruction.textContent = "Ready to spin!";
+      spinSound.play().then(() => spinSound.pause()).catch(() => {});
+      winSound.play().then(() => winSound.pause()).catch(() => {});
+    });
 
-.touch-instruction {
-  margin-top: 10px;
-  font-size: 1rem;
-  color: #00ffe7;
-  text-shadow: 0 0 8px #00ffe7;
-}
+    function spinReels() {
+      spinSound.currentTime = 0;
+      spinSound.play().catch(() => {});
 
-.slot-machine {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
+      reel1.classList.add("spinning");
+      reel2.classList.add("spinning");
+      reel3.classList.add("spinning");
 
-.reel {
-  font-size: 3rem;
-  width: 90px;
-  height: 90px;
-  margin: 0 15px;
-  background: radial-gradient(circle, #111 40%, #222 100%);
-  border: 2px solid #00ffe7;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 20px #00ffe7;
-  transition: transform 0.2s;
-}
+      let interval = setInterval(() => {
+        reel1.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        reel2.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        reel3.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      }, 100);
 
-.spinning {
-  animation: spin 0.2s infinite;
-}
+      setTimeout(() => {
+        clearInterval(interval);
+        reel1.classList.remove("spinning");
+        reel2.classList.remove("spinning");
+        reel3.classList.remove("spinning");
 
-@keyframes spin {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
+        spinCount++;
 
-button {
-  background: #ff00c8;
-  color: #000;
-  border: none;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 0 12px #ff00c8;
-  transition: transform 0.2s;
-  margin-top: 10px;
-}
+        if (spinCount === 1) {
+          reel1.textContent = symbols[0];
+          reel2.textContent = symbols[1];
+          reel3.textContent = symbols[2];
+          popup.classList.remove("hidden");
+        } else {
+          reel1.textContent = jackpotSymbol;
+          reel2.textContent = jackpotSymbol;
+          reel3.textContent = jackpotSymbol;
+          popup.classList.add("hidden");
+          winScreen.classList.remove("hidden");
+          spinButton.style.display = "none";
+          mainTitle.style.display = "none";
+          winSound.currentTime = 0;
+          winSound.play().catch(() => {});
+        }
+      }, 2000);
+    }
 
-button:hover {
-  transform: scale(1.1);
-}
-
-.hidden {
-  display: none;
-}
-
-#popup {
-  margin-top: 20px;
-}
-
-#winScreen {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#winScreen img {
-  max-width: 90%;
-  max-height: 80vh;
-  border: 3px solid #ff00c8;
-  box-shadow: 0 0 25px #ff00c8;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-.win-message {
-  font-size: 1.6rem;
-  color: #00ffe7;
-  text-shadow: 0 0 10px #00ffe7;
-  margin-top: 20px;
-}
-
-.jackpot-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
-}
+    spinButton.addEventListener("click", spinReels);
+    retryButton.addEventListener("click", spinReels);
+  </script>
+</body>
+</html>
