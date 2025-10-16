@@ -52,4 +52,10 @@ function spinReels() {
       reel3.textContent = symbols[2];
       popup.classList.remove("hidden");
     } else {
-      reel1.inner
+      reel1.innerHTML = jackpotSymbol;
+      reel2.innerHTML = jackpotSymbol;
+      reel3.innerHTML = jackpotSymbol;
+      popup.classList.add("hidden");
+      winScreen.classList.remove("hidden");
+      winMessage.classList.remove("hidden");
+      jackpotImage.classList.remove
