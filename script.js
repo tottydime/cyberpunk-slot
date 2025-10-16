@@ -11,11 +11,23 @@ const popup = document.getElementById("popup");
 const winScreen = document.getElementById("winScreen");
 const spinSound = document.getElementById("spinSound");
 const winSound = document.getElementById("winSound");
+const coin = document.getElementById("coin");
+const instruction = document.querySelector(".touch-instruction");
+const mainTitle = document.getElementById("mainTitle");
+const winMessage = document.querySelector(".win-message");
+const jackpotImage = document.getElementById("jackpotImage");
+
+coin.addEventListener("click", () => {
+  spinButton.disabled = false;
+  instruction.textContent = "Ready to spin!";
+  spinSound.play().then(() => spinSound.pause()).catch(() => {});
+  winSound.play().then(() => winSound.pause()).catch(() => {});
+});
 
 function spinReels() {
-  if (spinSound) spinSound.play();
+  spinSound.currentTime = 0;
+  spinSound.play().catch(() => {});
 
-  // Aggiungi classe animazione
   reel1.classList.add("spinning");
   reel2.classList.add("spinning");
   reel3.classList.add("spinning");
@@ -28,12 +40,11 @@ function spinReels() {
 
   setTimeout(() => {
     clearInterval(interval);
-    spinCount++;
-
-    // Rimuovi animazione
     reel1.classList.remove("spinning");
     reel2.classList.remove("spinning");
     reel3.classList.remove("spinning");
+
+    spinCount++;
 
     if (spinCount === 1) {
       reel1.textContent = symbols[0];
@@ -41,15 +52,4 @@ function spinReels() {
       reel3.textContent = symbols[2];
       popup.classList.remove("hidden");
     } else {
-      reel1.innerHTML = jackpotSymbol;
-      reel2.innerHTML = jackpotSymbol;
-      reel3.innerHTML = jackpotSymbol;
-      popup.classList.add("hidden");
-      winScreen.classList.remove("hidden");
-      if (winSound) winSound.play();
-    }
-  }, 2000);
-}
-
-spinButton.addEventListener("click", spinReels);
-retryButton.addEventListener("click", spinReels);
+      reel1.inner
