@@ -147,4 +147,12 @@ button:hover {
 .win-message {
   font-size: 1.6rem;
   color: #00ffe7;
-  text
+  text-shadow: 0 0 10px #00ffe7;
+  margin-top: 20px;
+}
+
+.jackpot-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}
