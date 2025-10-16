@@ -31,7 +31,6 @@
       </div>
 
       <div id="winScreen" class="hidden">
-        <img src="jackpot-image.jpeg" alt="Jackpot Icon" />
         <h2 class="win-message">YOU WON A DIME… A TOTTY DIME!</h2>
       </div>
     </div>
@@ -42,7 +41,7 @@
 
   <script>
     const symbols = ["🐶", "🦁", "🦦", "🐲"];
-    const jackpotSymbol = '<img src="jackpot-image.jpeg" alt="Jackpot" class="jackpot-icon">';
+    const jackpotSymbol = "💎";
 
     let spinCount = 0;
     const reel1 = document.getElementById("reel1");
@@ -93,9 +92,9 @@
           reel3.textContent = symbols[2];
           popup.classList.remove("hidden");
         } else {
-          reel1.innerHTML = jackpotSymbol;
-          reel2.innerHTML = jackpotSymbol;
-          reel3.innerHTML = jackpotSymbol;
+          reel1.textContent = jackpotSymbol;
+          reel2.textContent = jackpotSymbol;
+          reel3.textContent = jackpotSymbol;
           popup.classList.add("hidden");
           winScreen.classList.remove("hidden");
           spinButton.style.display = "none";
