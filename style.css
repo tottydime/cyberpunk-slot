@@ -119,6 +119,7 @@ button:hover {
   transform: scale(1.1);
 }
 
+/* ✅ Questa regola è fondamentale per nascondere gli elementi all’inizio */
 .hidden {
   display: none;
 }
