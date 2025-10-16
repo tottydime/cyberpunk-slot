@@ -31,80 +31,15 @@
       </div>
 
       <div id="winScreen" class="hidden">
-  <h2 class="win-message">YOU WON A DIME… A TOTTY DIME!</h2>
-</div>
+        <img src="jackpot-image.jpeg" alt="Jackpot Icon" id="jackpotImage" class="hidden" />
+        <h2 class="win-message hidden">YOU WON A DIME… A TOTTY DIME!</h2>
+      </div>
+    </div>
+  </div>
 
   <audio id="spinSound" src="spin.mp3" preload="auto"></audio>
   <audio id="winSound" src="win.mp3" preload="auto"></audio>
 
-  <script>
-    const symbols = ["🐶", "🦁", "🦦", "🐲"];
-    const jackpotSymbol = "💎";
-
-    let spinCount = 0;
-    const reel1 = document.getElementById("reel1");
-    const reel2 = document.getElementById("reel2");
-    const reel3 = document.getElementById("reel3");
-    const spinButton = document.getElementById("spinButton");
-    const retryButton = document.getElementById("retryButton");
-    const popup = document.getElementById("popup");
-    const winScreen = document.getElementById("winScreen");
-    const spinSound = document.getElementById("spinSound");
-    const winSound = document.getElementById("winSound");
-    const coin = document.getElementById("coin");
-    const instruction = document.querySelector(".touch-instruction");
-    const mainTitle = document.getElementById("mainTitle");
-
-    coin.addEventListener("click", () => {
-      spinButton.disabled = false;
-      instruction.textContent = "Ready to spin!";
-      spinSound.play().then(() => spinSound.pause()).catch(() => {});
-      winSound.play().then(() => winSound.pause()).catch(() => {});
-    });
-
-    function spinReels() {
-      spinSound.currentTime = 0;
-      spinSound.play().catch(() => {});
-
-      reel1.classList.add("spinning");
-      reel2.classList.add("spinning");
-      reel3.classList.add("spinning");
-
-      let interval = setInterval(() => {
-        reel1.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        reel2.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        reel3.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-      }, 100);
-
-      setTimeout(() => {
-        clearInterval(interval);
-        reel1.classList.remove("spinning");
-        reel2.classList.remove("spinning");
-        reel3.classList.remove("spinning");
-
-        spinCount++;
-
-        if (spinCount === 1) {
-          reel1.textContent = symbols[0];
-          reel2.textContent = symbols[1];
-          reel3.textContent = symbols[2];
-          popup.classList.remove("hidden");
-        } else {
-          reel1.textContent = jackpotSymbol;
-          reel2.textContent = jackpotSymbol;
-          reel3.textContent = jackpotSymbol;
-          popup.classList.add("hidden");
-          winScreen.classList.remove("hidden");
-          spinButton.style.display = "none";
-          mainTitle.style.display = "none";
-          winSound.currentTime = 0;
-          winSound.play().catch(() => {});
-        }
-      }, 2000);
-    }
-
-    spinButton.addEventListener("click", spinReels);
-    retryButton.addEventListener("click", spinReels);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
